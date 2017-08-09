@@ -1,0 +1,6 @@
+project/target
+target
+node_modules
+.idea
+dev.config.json
+.DS_Store
