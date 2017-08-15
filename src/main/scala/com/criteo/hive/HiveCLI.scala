@@ -1,6 +1,6 @@
 package com.criteo.hive
 
-import org.apache.hive.service.cli.thrift._
+import hive.service.thrift._
 import org.jline.reader.{EndOfFileException, LineReaderBuilder, UserInterruptException}
 import org.jline.terminal.TerminalBuilder
 import org.rogach.scallop.ScallopConf

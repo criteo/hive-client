@@ -4,3 +4,4 @@ node_modules
 .idea
 dev.config.json
 .DS_Store
+derby.log

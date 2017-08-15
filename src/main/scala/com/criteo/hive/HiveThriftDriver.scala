@@ -2,7 +2,7 @@ package com.criteo.hive
 
 import java.util.concurrent.{Executors, TimeUnit}
 
-import org.apache.hive.service.cli.thrift._
+import hive.service.thrift._
 import org.apache.thrift.protocol.TBinaryProtocol
 import org.apache.thrift.transport.TSocket
 
