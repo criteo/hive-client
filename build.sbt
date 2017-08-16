@@ -5,6 +5,8 @@ scalaVersion := "2.11.11"
 
 compileOrder := CompileOrder.JavaThenScala
 
+resolvers += "conjars.org" at "http://conjars.org/repo"
+
 libraryDependencies ++= Seq(
   "org.apache.thrift" % "libthrift" % "0.9.3",
   "org.rogach" %% "scallop" % "3.0.3",
