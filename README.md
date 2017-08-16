@@ -1,4 +1,5 @@
 # A Scala Hive Client
+![Build status](https://api.travis-ci.org/criteo/hive-client.svg?branch=master)
 
 An *experimental* asynchronous pure Thrift Hive client.
 
