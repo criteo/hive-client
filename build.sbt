@@ -12,9 +12,10 @@ libraryDependencies ++= Seq(
   "org.rogach" %% "scallop" % "3.0.3",
   "org.jline" % "jline" % "3.3.0",
 
+  "org.apache.logging.log4j" % "log4j-api" % "2.6.2",
+  "org.apache.logging.log4j" % "log4j-core" % "2.6.2",
+
   // hive deps only used for tests!
-  "org.apache.logging.log4j" % "log4j-api" % "2.6.2" % "test",
-  "org.apache.logging.log4j" % "log4j-core" % "2.6.2" % "test",
   "org.apache.hadoop" % "hadoop-mapreduce-client-common" % "2.6.0" % "test",
   "org.apache.hadoop" % "hadoop-common" % "2.6.0" % "test",
   "org.apache.hive" % "hive-jdbc" % "1.1.0" % "test",
