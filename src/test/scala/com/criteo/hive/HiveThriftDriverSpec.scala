@@ -2,6 +2,7 @@ package com.criteo.hive
 
 import java.net.ServerSocket
 
+import com.criteo.hive.HiveCLI.PrintLnLogger
 import org.apache.hadoop.hive.conf.HiveConf
 import org.apache.hadoop.hive.conf.HiveConf.ConfVars
 import hive.service.thrift.TStatusCode
@@ -41,15 +42,23 @@ class HiveThriftDriverSpec extends AsyncWordSpec with Matchers with BeforeAndAft
 
   "A HiveThriftDriverSpec" should {
     "connect" in {
-      val driver = new HiveThriftDriver("127.0.0.1", port)
-      driver.openSession(HiveUserPass("foo", "bar")).map { r =>
+      val driver = new HiveThriftDriver("127.0.0.1", port, new PrintLnLogger())
+      driver.openSession(HiveUserPass("foo", "bar"),
+        database = "default",
+        hiveConf = Map[String, String](),
+        hiveVar = Map[String, String]()).map { r =>
         Option(r.getSessionHandle).map(driver.closeSession)
         TStatusCode.SUCCESS_STATUS shouldEqual r.status.statusCode
       }
     }
     "execute a query" in {
-      new HiveThriftDriver("127.0.0.1", port)
-        .executeQuery("SELECT 1", HiveUserPass("foo", "bar"))
+      new HiveThriftDriver("127.0.0.1", port, new PrintLnLogger())
+        .executeQuery(
+          sql = "select 1",
+          database = "default",
+          credentials = HiveUserPass("foo", "bar"),
+          hiveConf = Map[String, String](),
+          hiveVar = Map[String, String]())
         .map {
           case (Some(res), _) => res.results.columns.get(0).getI32Val.values.get(0) shouldBe 1
           case _ => fail("no results received!")
